@@ -21,21 +21,21 @@ jobs:
       # ── 1. Build Store Project (หน้าหลัก) ───────────────────
       - name: Install & Build Store
         run: |
-          cd 1-store
+          cd store
           npm install
           npm run build
 
       # ── 2. Build Get UDID Project ─────────────────────────
       - name: Install & Build Get UDID
         run: |
-          cd 2-get-udid
+          cd get-udid
           npm install
           npm run build
 
       # ── 3. Build UDID Info Project ────────────────────────
       - name: Install & Build UDID Info
         run: |
-          cd 3-udid-info
+          cd udid-info
           npm install
           npm run build
 
@@ -43,16 +43,16 @@ jobs:
       - name: Prepare Final Dist Folder
         run: |
           mkdir -p dist
-          # ก๊อปปี้ไฟล์จาก 1-store/dist ไปไว้ที่ root ของ dist/
-          cp -r 1-store/dist/* dist/
+          # ก๊อปปี้ไฟล์จาก store/dist ไปไว้ที่ root ของ dist/
+          cp -r store/dist/* dist/
           
-          # สร้างโฟลเดอร์ย่อย และก๊อปปี้ไฟล์จาก 2-get-udid/dist เข้าไป
+          # สร้างโฟลเดอร์ย่อย และก๊อปปี้ไฟล์จาก get-udid/dist เข้าไป
           mkdir -p dist/get-udid
-          cp -r 2-get-udid/dist/* dist/get-udid/
+          cp -r get-udid/dist/* dist/get-udid/
           
-          # สร้างโฟลเดอร์ย่อย และก๊อปปี้ไฟล์จาก 3-udid-info/dist เข้าไป
+          # สร้างโฟลเดอร์ย่อย และก๊อปปี้ไฟล์จาก udid-info/dist เข้าไป
           mkdir -p dist/udid-info
-          cp -r 3-udid-info/dist/* dist/udid-info/
+          cp -r udid-info/dist/* dist/udid-info/
 
       # ── 5. Upload Final Artifact ─────────────────────────
       - name: Upload Build Artifact
